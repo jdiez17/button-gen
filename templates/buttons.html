@@ -1,0 +1,26 @@
+<div id="buttons-{{ id }}">
+{% for button in buttons %}
+    <a href="{{ button.link }}">
+        <img src="{{ button.image.rest }}" data-img-rest="{{ button.image.rest }}" data-img-hover="{{ button.image.hover }}">
+    </a>
+{% endfor %}
+</div>
+
+<script>
+    images = document.querySelectorAll("#buttons-{{ id }} img");
+
+    for(i = 0; i < images.length; i++) {
+        images[i].addEventListener("mouseenter", function(ev) {
+            this.src = this.dataset.imgHover;
+        });
+        images[i].addEventListener("mouseleave", function(ev) {
+            this.src = this.dataset.imgRest;
+        });
+    }
+</script> 
+
+<style>
+    #buttons-{{ id }} a {
+        border-style: none;
+    }
+</style>
